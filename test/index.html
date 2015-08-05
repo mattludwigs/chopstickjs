@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mocha Tests</title>
+  <link rel="stylesheet" href="lib/mocha/mocha.css" />
+</head>
+<body>
+  <div id="mocha"></div>
+  <script src="lib/chai/chai.js"></script>
+  <script src="lib/mocha/mocha.js"></script>
+  <script src="../dist/chopstick.js"></script>
+  <script>mocha.setup('bdd')</script>
+  <script src="chopstick.js"></script>
+  <script>
+    mocha.run();
+  </script>
+</body>
+</html>
