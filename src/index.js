@@ -2,6 +2,6 @@
 import db from "./modules/database";
 
 let chopstick = {};
-chopstick.db = require("./modules/database");
+chopstick.db = db;
 
 window.chopstick = window.chopstick || chopstick;
