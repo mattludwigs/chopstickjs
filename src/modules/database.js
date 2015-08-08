@@ -1,8 +1,8 @@
 "use strict";
 
-let collection = require("./collection");
+import collection from "./collection";
 
-module.exports = {
+let db = {
 
 	collection: collection,
 
@@ -86,3 +86,5 @@ module.exports = {
 	}
 
 }
+
+export default db;

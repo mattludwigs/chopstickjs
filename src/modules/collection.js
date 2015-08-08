@@ -115,5 +115,4 @@ let collection = {
 		}// end find
 	}
 
-
-module.exports = collection	
+export default collection;

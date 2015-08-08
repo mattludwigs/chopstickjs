@@ -1,25 +1,22 @@
 var gulp = require("gulp"),
 		browserify = require("browserify"),
-		fs = require("fs"),
 		uglify = require("gulp-uglify"),
+		buffer = require("vinyl-buffer"),
+		source = require("vinyl-source-stream"),
 		rename = require("gulp-rename"),
 		babelify = require("babelify");
 
-
 gulp.task("js", function () {
-	browserify("./src/index.js", {debug: true})
-		.transform(babelify)
-		.bundle()
-		.on("error", function (err) { console.log("Error: " + err.message) })
-		.pipe(fs.createWriteStream("./dist/chopstick.js"));
-});
+		var b = browserify({
+			entries: "./src/index.js",
+			debug: true,
+			transform: [babelify]
+		});
 
-gulp.task("mkdir", function () {
-	try {
-		fs.mkdirSync("./dist")
-	} catch (e) {
-		if (e.code !== "EEXIST") throw e;
-	}
+		return b.bundle()
+			.pipe(source("./chopstick.js"))
+			.pipe(buffer())
+			.pipe(gulp.dest("./dist/"));
 });
 
 gulp.task("js:min",["js"], function () {
